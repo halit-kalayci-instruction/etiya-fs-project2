@@ -10,8 +10,7 @@ import { ProductModule } from './features/product/product.module';
   declarations: [AppComponent],
   // ProductModule'i sadece ve sadece ihtiyaç duyduğumda yükle..
   // Products ile ilgili bir sayfaya girdiğinde
-  // 11:20
-  imports: [BrowserModule, AppRoutingModule, SharedModule, ProductModule],
+  imports: [BrowserModule, AppRoutingModule, SharedModule],
   providers: [],
   bootstrap: [AppComponent],
 })
