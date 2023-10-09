@@ -1,0 +1,19 @@
+<div class="container">
+  <div
+    *ngIf="form"
+    class="d-flex justify-content-center align-items-center h-full flex-column"
+  >
+    <h5>
+      {{ idToUpdate ? "Update Category #" + idToUpdate : "Add New Category" }}
+    </h5>
+    <form [formGroup]="form">
+      <div class="form-group">
+        <label>Category Name</label>
+        <input formControlName="name" type="text" class="form-control" />
+      </div>
+      <button (click)="submit()" class="btn w-100 btn-primary mt-3">
+        Submit
+      </button>
+    </form>
+  </div>
+</div>
