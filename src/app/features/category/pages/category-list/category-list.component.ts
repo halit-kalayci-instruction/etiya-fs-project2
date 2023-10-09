@@ -8,6 +8,7 @@ import { GetAllCategoryModel } from '../../models/getAllCategoryModel';
 })
 export class CategoryListComponent implements OnInit {
   categoryList: GetAllCategoryModel[] = [];
+  categoryToDelete!: GetAllCategoryModel | null;
   constructor(private categoryService: CategoryService) {}
   ngOnInit(): void {
     this.fetchCategories();
@@ -16,6 +17,17 @@ export class CategoryListComponent implements OnInit {
   fetchCategories() {
     this.categoryService.getAll().subscribe((response) => {
       this.categoryList = response;
+    });
+  }
+
+  setCategoryToDelete(model: GetAllCategoryModel) {
+    this.categoryToDelete = model;
+  }
+
+  deleteCategory(id: number) {
+    this.categoryService.delete(id).subscribe((response) => {
+      this.fetchCategories();
+      this.categoryToDelete = null;
     });
   }
 }

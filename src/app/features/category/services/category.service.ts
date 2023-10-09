@@ -13,4 +13,7 @@ export class CategoryService {
   getAll(): Observable<GetAllCategoryModel[]> {
     return this.httpClient.get<GetAllCategoryModel[]>(this.controllerUrl);
   }
+  delete(id: number): Observable<any> {
+    return this.httpClient.delete<any>(this.controllerUrl + '/' + id);
+  }
 }
