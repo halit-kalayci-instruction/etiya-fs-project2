@@ -7,12 +7,19 @@ import { SharedModule } from './shared/shared.module';
 import { ProductModule } from './features/product/product.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CoreModule } from './core/core.module';
 
 @NgModule({
   declarations: [AppComponent],
   // ProductModule'i sadece ve sadece ihtiyaç duyduğumda yükle..
   // Products ile ilgili bir sayfaya girdiğinde
-  imports: [BrowserModule, AppRoutingModule, SharedModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    SharedModule,
+    HttpClientModule,
+    CoreModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
