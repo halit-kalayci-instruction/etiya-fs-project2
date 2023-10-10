@@ -22,12 +22,26 @@ export class ErrorHandlerInterceptor implements HttpInterceptor {
       catchError((errorResponse) => {
         // işleme
         if (errorResponse instanceof HttpErrorResponse) {
-          if (errorResponse.status == HttpStatusCode.BadRequest) {
-            this.toastrService.error(errorResponse.error);
+          switch (errorResponse.error.type) {
+            case 'ValidationException':
+              this.handleValidationException(errorResponse);
+              break;
+            case 'BusinessException':
+              this.handleBusinessException(errorResponse);
+              break;
           }
         }
         throw errorResponse;
       })
     );
+  }
+
+  private handleValidationException(exception: HttpErrorResponse) {
+    Object.keys(exception.error.detail).forEach((key) => {
+      this.toastrService.error(key + ' ' + exception.error.detail[key]);
+    });
+  }
+  private handleBusinessException(exception: HttpErrorResponse) {
+    this.toastrService.error(exception.error.detail);
   }
 }
