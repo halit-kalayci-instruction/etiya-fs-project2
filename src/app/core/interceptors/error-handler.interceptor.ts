@@ -29,6 +29,8 @@ export class ErrorHandlerInterceptor implements HttpInterceptor {
             case 'BusinessException':
               this.handleBusinessException(errorResponse);
               break;
+            default:
+              this.toastrService.error('Beklenmedik hata..');
           }
         }
         throw errorResponse;
