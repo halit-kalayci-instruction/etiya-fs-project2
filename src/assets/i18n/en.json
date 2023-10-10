@@ -1,4 +1,6 @@
 {
   "hello": "Hi",
-  "addNew": "Add New"
+  "addNew": "Add New",
+  "tr": "Turkish",
+  "en": "English"
 }

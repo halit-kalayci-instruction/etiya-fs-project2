@@ -6,7 +6,7 @@ import { CategoryListComponent } from './pages/category-list/category-list.compo
 import { AddOrUpdateCategoryComponent } from './pages/add-or-update-category/add-or-update-category.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
-
+//11:00
 @NgModule({
   declarations: [CategoryListComponent, AddOrUpdateCategoryComponent],
   imports: [
