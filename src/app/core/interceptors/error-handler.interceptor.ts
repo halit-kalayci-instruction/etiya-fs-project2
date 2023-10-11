@@ -9,10 +9,11 @@ import {
 } from '@angular/common/http';
 import { Observable, catchError, finalize } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class ErrorHandlerInterceptor implements HttpInterceptor {
-  constructor(private toastrService: ToastrService) {}
+  constructor(private toastrService: ToastrService, private router: Router) {}
 
   intercept(
     request: HttpRequest<unknown>,
@@ -22,6 +23,11 @@ export class ErrorHandlerInterceptor implements HttpInterceptor {
       catchError((errorResponse) => {
         // işleme
         if (errorResponse instanceof HttpErrorResponse) {
+          if (errorResponse.status == HttpStatusCode.Unauthorized) {
+            this.handleUnauthorizedException(errorResponse);
+            throw errorResponse;
+          }
+
           switch (errorResponse.error.type) {
             case 'ValidationException':
               this.handleValidationException(errorResponse);
@@ -36,6 +42,14 @@ export class ErrorHandlerInterceptor implements HttpInterceptor {
         throw errorResponse;
       })
     );
+  }
+
+  private handleUnauthorizedException(exception: HttpErrorResponse) {
+    // Refresh token implementasyonu
+    this.toastrService.error(
+      'Oturumunuzun süresi dolmuştur lütfen yeniden giriş yapınız..'
+    );
+    this.router.navigateByUrl('/login');
   }
 
   private handleValidationException(exception: HttpErrorResponse) {
