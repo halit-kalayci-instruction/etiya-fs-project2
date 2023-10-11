@@ -14,7 +14,12 @@ export class CategoryService {
   constructor(private httpClient: HttpClient) {}
 
   getAll(): Observable<GetAllCategoryModel[]> {
-    return this.httpClient.get<GetAllCategoryModel[]>(this.controllerUrl);
+    return this.httpClient.get<GetAllCategoryModel[]>(this.controllerUrl, {
+      headers: {
+        Authorization:
+          'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJoYWxpdCIsImlhdCI6MTY5NzAxMjU5NiwiZXhwIjoxNjk3MDk4OTk2fQ.U9A9cVIzLrYqJdEh58MKXWZ0zb-ENkcwEGHkMnyJLRg',
+      },
+    });
   }
   getById(id: number): Observable<GetCategoryModel> {
     return this.httpClient.get<GetCategoryModel>(this.controllerUrl + '/' + id);
