@@ -17,6 +17,11 @@ const routes: Routes = [
         (m) => m.CategoryModule
       ),
   },
+  {
+    path: 'chat',
+    loadChildren: () =>
+      import('./features/chat/chat.module').then((m) => m.ChatModule),
+  },
 ];
 
 @NgModule({

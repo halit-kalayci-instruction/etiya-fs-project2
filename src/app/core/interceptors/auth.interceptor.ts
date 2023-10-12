@@ -15,7 +15,6 @@ export class AuthInterceptor implements HttpInterceptor {
     request: HttpRequest<unknown>,
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
-    debugger;
     let token = localStorage.getItem('token');
     if (!token) return next.handle(request);
 
