@@ -17,8 +17,18 @@
         <td>{{ product.name }}</td>
         <td>{{ product.categoryName }}</td>
         <td>
-          <button class="btn btn-sm btn-info mx-2">Update</button>
-          <button class="btn btn-sm btn-danger">Delete</button>
+          <button
+            [routerLink]="'update/' + product.id"
+            class="btn btn-sm btn-info mx-2"
+          >
+            Update
+          </button>
+          <button
+            (click)="deleteProduct(product.id)"
+            class="btn btn-sm btn-danger"
+          >
+            Delete
+          </button>
         </td>
       </tr>
     </tbody>

@@ -18,4 +18,10 @@ export class ProductListComponent implements OnInit {
       this.productList = response;
     });
   }
+
+  deleteProduct(id: number) {
+    this.productService.delete(id).subscribe((response) => {
+      this.fetchProducts();
+    });
+  }
 }

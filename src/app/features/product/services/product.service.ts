@@ -27,7 +27,7 @@ export class ProductService extends BaseService {
   }
 
   update(request: UpdateProductModel): Observable<GetProductModel> {
-    return this.httpClient.post<GetProductModel>(this.controllerUrl, request);
+    return this.httpClient.put<GetProductModel>(this.controllerUrl, request);
   }
 
   delete(id: number): Observable<any> {
