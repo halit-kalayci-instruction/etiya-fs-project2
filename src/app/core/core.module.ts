@@ -9,9 +9,11 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { AcceptLanguageInterceptor } from './interceptors/accept-language.interceptor';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { OverlayLoaderComponent } from './components/overlay-loader/overlay-loader.component';
+import { LoadingInterceptor } from './interceptors/loading.interceptor';
 
 @NgModule({
-  declarations: [],
+  declarations: [OverlayLoaderComponent],
   imports: [
     CommonModule,
     CoreRoutingModule,
@@ -34,6 +36,12 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
       useClass: AcceptLanguageInterceptor,
       multi: true,
     },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoadingInterceptor,
+      multi: true,
+    },
   ],
+  exports: [OverlayLoaderComponent],
 })
 export class CoreModule {}
