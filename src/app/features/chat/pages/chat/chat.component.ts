@@ -9,11 +9,16 @@ export class ChatComponent implements OnInit {
   messages: any[] = [];
   messageToSent: string = '';
   nickname: string = '';
+  onlineUserCount: number = 0;
   constructor(private socket: Socket) {}
 
   ngOnInit() {
     this.socket.on('MessageReceived', (message: string) => {
       this.messages.push(message);
+    });
+
+    this.socket.on('UserCountChanged', (userCount: number) => {
+      this.onlineUserCount = userCount;
     });
   }
   send() {

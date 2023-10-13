@@ -33,7 +33,7 @@ app.post('/', (req, res) => {
 // WebSocket Server'a bağlantı yapan her socketi handle eder..
 ioServer.on('connection', (socket) => {
   console.log("Yeni bağlantı", socket.id);
-
+  ioServer.emit("UserCountChanged", ioServer.engine.clientsCount)
   socket.on('MessageSent', (message) => {
     // server tarafında clientlara veri göndermenin bir kaç yolu var.
 
@@ -45,6 +45,9 @@ ioServer.on('connection', (socket) => {
     socket.broadcast.emit("MessageReceived", message);
   })
 
+  socket.on('disconnect', () => {
+    ioServer.emit("UserCountChanged", ioServer.engine.clientsCount)
+  })
 })
 
 server.listen(9000, () => {
