@@ -1,1 +1,51 @@
-<p>product-list works!</p>
+<div class="container mt-5">
+  <button routerLink="add" class="btn btn-primary">
+    {{ "addNew" | translate }}
+  </button>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Category Name</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of productList">
+        <th scope="row">{{ product.id }}</th>
+        <td>{{ product.name }}</td>
+        <td>{{ product.categoryName }}</td>
+        <td>
+          <button class="btn btn-sm btn-info mx-2">Update</button>
+          <button class="btn btn-sm btn-danger">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div
+  id="exampleModal"
+  *ngIf="false"
+  class="modal fade show d-block"
+  tabindex="-1"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Are you sure?</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <p></p>
+      </div>
+      <div class="modal-footer"></div>
+    </div>
+  </div>
+</div>

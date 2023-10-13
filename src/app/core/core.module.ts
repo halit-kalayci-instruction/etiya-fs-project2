@@ -17,17 +17,6 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
     CoreRoutingModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
-    TranslateModule.forRoot({
-      defaultLanguage: 'tr',
-      useDefaultLang: true,
-      loader: {
-        provide: TranslateLoader,
-        useFactory: (httpClient: HttpClient) => {
-          return new TranslateHttpLoader(httpClient, './assets/i18n/', '.json');
-        },
-        deps: [HttpClient],
-      },
-    }),
   ],
   providers: [
     {
