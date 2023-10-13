@@ -5,7 +5,12 @@ import { LoginComponent } from './pages/login/login.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'homepage', pathMatch: 'full' },
-  { path: 'homepage', component: HomepageComponent, pathMatch: 'full' },
+  {
+    path: 'homepage',
+    component: HomepageComponent,
+    pathMatch: 'full',
+    data: { title: 'Etiya - Ana Sayfa' },
+  },
   { path: 'login', component: LoginComponent },
 ];
 

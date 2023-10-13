@@ -16,6 +16,7 @@ const routes: Routes = [
       import('./features/category/category.module').then(
         (m) => m.CategoryModule
       ),
+    data: { title: 'Etiya - Kategoriler' },
   },
   {
     path: 'chat',

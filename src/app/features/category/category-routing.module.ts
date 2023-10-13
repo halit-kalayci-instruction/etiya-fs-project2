@@ -4,8 +4,16 @@ import { CategoryListComponent } from './pages/category-list/category-list.compo
 import { AddOrUpdateCategoryComponent } from './pages/add-or-update-category/add-or-update-category.component';
 
 const routes: Routes = [
-  { path: '', component: CategoryListComponent },
-  { path: 'add', component: AddOrUpdateCategoryComponent },
+  {
+    path: '',
+    component: CategoryListComponent,
+    data: { title: 'Etiya - Kategoriler' },
+  },
+  {
+    path: 'add',
+    component: AddOrUpdateCategoryComponent,
+    data: { title: 'Etiya - Kategori Ekle' },
+  },
   {
     path: 'update/:id',
     component: AddOrUpdateCategoryComponent,

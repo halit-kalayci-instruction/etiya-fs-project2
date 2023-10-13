@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoryService } from '../../services/category.service';
 import { GetAllCategoryModel } from '../../models/getAllCategoryModel';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   templateUrl: './category-list.component.html',
@@ -9,7 +10,7 @@ import { GetAllCategoryModel } from '../../models/getAllCategoryModel';
 export class CategoryListComponent implements OnInit {
   categoryList: GetAllCategoryModel[] = [];
   categoryToDelete!: GetAllCategoryModel | null;
-  constructor(private categoryService: CategoryService) {}
+  constructor(private categoryService: CategoryService, private title: Title) {}
   ngOnInit(): void {
     this.fetchCategories();
   }
