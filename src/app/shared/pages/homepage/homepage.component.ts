@@ -11,6 +11,7 @@ import { ProductService } from 'src/app/features/product/services/product.servic
 export class HomepageComponent implements OnInit {
   productList: GetAllProductModel[] = [];
   categoryList: GetAllCategoryModel[] = [];
+  fakeArray: any[] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
   constructor(
     private categoryService: CategoryService,
     private productService: ProductService

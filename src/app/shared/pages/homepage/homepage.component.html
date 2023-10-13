@@ -1,1 +1,10 @@
-<p>Burası anasayfa</p>
+<div class="container">
+  <div class="row">
+    <div *ngFor="let item of fakeArray" class="col-4">
+      <img
+        [defaultImage]="'assets/images/loading.jpg'"
+        [lazyLoad]="'https://placehold.co/600x400/EEE/31343C'"
+      />
+    </div>
+  </div>
+</div>

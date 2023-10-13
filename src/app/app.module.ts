@@ -14,6 +14,11 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtools, StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { JwtModule } from '@auth0/angular-jwt';
 import { sharedReducers } from './shared/store/shared.reducers';
+import {
+  LAZYLOAD_IMAGE_HOOKS,
+  LazyLoadImageModule,
+  ScrollHooks,
+} from 'ng-lazyload-image';
 
 @NgModule({
   declarations: [AppComponent],
@@ -43,8 +48,9 @@ import { sharedReducers } from './shared/store/shared.reducers';
         tokenGetter: () => localStorage.getItem('token'),
       },
     }),
+    LazyLoadImageModule,
   ],
-  providers: [],
+  providers: [{ provide: LAZYLOAD_IMAGE_HOOKS, useClass: ScrollHooks }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
