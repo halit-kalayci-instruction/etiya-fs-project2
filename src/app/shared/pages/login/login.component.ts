@@ -48,7 +48,7 @@ export class LoginComponent {
         let decodedToken = this.jwtService.decodeToken(response.token);
         let user = {
           username: decodedToken['sub'],
-          expirationDate: new Date(decodedToken['exp']),
+          expirationDate: new Date(decodedToken['exp'] * 1000),
         };
         this.store.dispatch(login(user));
       },
