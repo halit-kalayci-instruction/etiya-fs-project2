@@ -72,7 +72,6 @@ export class AddOrUpdateProductComponent {
       this.categories = response;
     });
   }
-
   submit() {
     if (!this.addProductForm.valid) {
       // uyarı

@@ -10,6 +10,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CoreModule } from './core/core.module';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtools, StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { JwtModule } from '@auth0/angular-jwt';
+import { sharedReducers } from './shared/store/shared.reducers';
 
 @NgModule({
   declarations: [AppComponent],
@@ -30,6 +34,13 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
           return new TranslateHttpLoader(httpClient, './assets/i18n/', '.json');
         },
         deps: [HttpClient],
+      },
+    }),
+    StoreModule.forRoot(sharedReducers),
+    StoreDevtoolsModule.instrument(),
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: () => localStorage.getItem('token'),
       },
     }),
   ],
